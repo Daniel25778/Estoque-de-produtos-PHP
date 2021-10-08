@@ -32,6 +32,9 @@
 
                 <!-- LISTAGEM DE PRODUTOS (INICIO) -->
 
+
+                
+
                 <article class="card-produto">
 
                        <div class="acoes-produtos">
