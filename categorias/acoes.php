@@ -1,93 +1,105 @@
 <?php
-
-
 session_start();
-/**CONEXAO COM O BANCO DE DADOS*/
+/*CONEXÃO COM BANCO DE DADOS*/
 require('../database/conexao.php');
 
-/**FUNCAO DE VALIDACAO */
-
+/*FUNÇÃO DE VALIDAÇÃO*/
 function validaCampos(){
 
-  $erros = [];
+    $erros = [];
 
-  if(!isset($_POST['descricao']) || $_POST['descricao'] == ""){
+    if(!isset($_POST['descricao']) || $_POST['descricao'] == ""){
 
-    $erros[] = "O campo descrição é de preenchimento obrigatório";
+        $erros[] = "O campo descrição é de preenchimento obrigatório";
 
-  }
+    }
 
-  return $erros;
+    return $erros;
 
 }
 
+/*
+TRATAMENTO DOS DADOS VINDOS DO FORMULÁRIO
 
-/**TRATAMENTO DOS DADOS VINDOS DO FORMULARIO*/
+- TIPOS DA AÇÃO
+- EXECUÇÃO DOS PROCESSOS DA AÇÃO SOLICITADA
+
+*/
 switch ($_POST['acao']) {
+
     case 'inserir':
-      
-        /**CHAMADA DA FUNÇÃO DE VALIDAÇÃO */
+
+        //CHAMADA DA FUNÇÃO DE VALIDAÇÃO DE ERROS:
         $erros = validaCampos();
 
-        /**VERIFICAÇÃO SE EXISTEM ERROS */
-
+        //VERIFICAR SE EXISTEM ERROS:
         if(count($erros) > 0){
 
             $_SESSION["erros"] = $erros;
 
-   
-            header('location:index.php');
-        
-            exit;
+            header('location: index.php');
+
+            exit();
 
         }
 
+        // echo 'INSERIR';exit;
+
         $descricao = $_POST['descricao'];
 
+        /*MONTGEM DA INSTRUÇÃO SQL DE INSERÇÃO DE DADOS:*/
+        $sql = "INSERT INTO tbl_categoria (descricao)
+        VALUES ('$descricao')";
 
-        /**MONTAGEM DA INSTRUÇÃO DE DADOS: */
-        $sql = "INSERT INTO tbl_categoria(descricao) VALUES ('$descricao')";
-        // echo $sql;
+        // echo $sql;exit;
 
+        /*
+        mysql_query parametros:
+        1 - Uma conexão aberta e válida
+        2 - Uma instrução sql válida
+        */
         $resultado = mysqli_query($conexao, $sql);
+
+        header('location:index.php');
 
         // echo '<pre>';
         // var_dump($resultado);
         // echo '</pre>';
         // exit;
 
-        header('location:index.php');
-
         break;
-    
-      
-        case 'deletar':
-        
-            $categoriaId = $_POST['categoriaId'];
 
-            $sql = "DELETE FROM tbl_categoria WHERE id = $categoriaId";
+        case 'deletar':
+
+            $categoriaID = $_POST['categoriaId'];
+
+            $sql = "DELETE FROM tbl_categoria WHERE id = $categoriaID";
 
             $resultado = mysqli_query($conexao, $sql);
 
-            header('location:index.php');
+            header('location: index.php');
 
-        break;
+            break;
 
         case 'editar':
 
-        $id = $_POST["id"];
-        $descricao = $_POST["descricao"];
+            $id = $_POST["id"];
+            $descricao = $_POST["descricao"];
 
-        $sql = "UPDATE tbl_categoria SET descricao = '$descricao' WHERE id = $id";
+            $sql = "UPDATE tbl_categoria SET descricao = '$descricao' WHERE id = $id";
+            // echo $sql; exit;
+            
+            $resultado = mysqli_query($conexao, $sql);
 
-        $resultado = mysqli_query($conexao, $sql);
+            header('location: index.php');
 
-        header("location: index.php");
-
+            break;
+    
+    default:
+        # code...
         break;
 }
 
 
-             /**TIPOS DA AÇÃO*/
-/**EXECUÇÃO DOS PROCESSOS DA AÇÃO SOLICITADA*/
 
+?>
