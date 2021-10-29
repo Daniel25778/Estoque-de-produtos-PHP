@@ -1,8 +1,32 @@
 <?php
 
-
+session_start();
 
 require("../../database/conexao.php");
+
+
+switch ($_POST['acao']) {
+    case 'login':
+        
+        $usuario = $_POST["usuario"];
+        $senha = $_POST["senha"];
+
+        realizarLogin($usuario, $senha, $conexao);
+
+        break;
+    
+    case 'logout':
+        
+       session_destroy();
+
+       header("location: ../../produtos/index.php");
+
+        break;
+    
+    default:
+        # code...
+        break;
+}
 
 
 function realizarLogin ($usuario, $senha, $conexao){
@@ -13,17 +37,24 @@ function realizarLogin ($usuario, $senha, $conexao){
 
     $dadosUsuario = mysqli_fetch_array($resultado);
 
-    if(isset($dadosUsuario["usuario"]) && isset($dadosUsuario["senha"])){
+    if(isset($dadosUsuario["usuario"]) && isset($dadosUsuario["senha"]) && password_verify($senha, $dadosUsuario['senha'])){
 
        echo 'LOGADO!';
 
+       $_SESSION["usuarioId"] = $dadosUsuario["id"];
+       $_SESSION["nome"] = $dadosUsuario["nome"];
+
+      
+
+     header("location: ../../produtos/index.php");
+
     }else{
-        echo 'DEU MERDA';
+        echo 'DEU ERRO OTARIO';
     }
 
 }
 
-realizarLogin('jose123', '123', $conexao);
+
 
     
 
