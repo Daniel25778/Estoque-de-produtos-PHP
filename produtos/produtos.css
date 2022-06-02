@@ -3,25 +3,21 @@
 }
 
 .produtos-container header button {
-  margin-right: 10px;
 }
 
 .produtos-container main {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(1fr));
   gap: 10px;
   margin-top: 20px;
-  place-items: center;
-
-  padding-bottom: 40px;
 }
 
 .card-produto {
   background-color: var(--backgroundPrimary);
   width: 100%;
-  min-width: 300px;
-  max-width: 350px;
   position: relative;
+  display: flex;
+  flex-direction: row;
   /* z-index: -1; */
 
   border-radius: 6px;
@@ -46,51 +42,21 @@
 }
 
 .card-produto figure img {
-  width: 100%;
+  width: 50%;
   max-height: 100%;
-
   border-radius: 6px 6px 0px 0px;
 }
 
 .card-produto section {
   display: flex;
-  flex-direction: column;
   padding: 10px;
-
   color: var(--textPrimary);
 }
 
-.card-produto section .preco {
-  font-size: 26px;
-}
 
-.card-produto section .preco > em {
-  font-size: 14px;
-  color: green;
-  text-decoration: line-through;
-}
 
-.card-produto section .parcelamento {
-  font-size: 14px;
-}
 
-.card-produto section .parcelamento em {
-  color: var(--accentSecondary);
-  font-style: normal;
-}
 
-.card-produto section .categoria {
-  margin-top: 10px;
-  font-size: 14px;
-  color: var(--textSecundary);
-}
-
-.card-produto section .categoria em {
-  padding: 4px;
-  background-color: var(--backgroundSecondary);
-  border-radius: 4px;
-  margin-right: 4px;
-}
 .card-produto section .descricao {
   margin-top: 16px;
   font-size: 16px;

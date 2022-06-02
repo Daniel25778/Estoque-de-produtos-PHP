@@ -1,10 +1,9 @@
 .header {
   position: fixed;
-  height: 60px;
+  height: 90px;
   width: 100%;
-  background-color: var(--accentPrimary);
+  background-color: #b3b3b3;
   color: var(--textPrimary);
-
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -42,15 +41,12 @@
 .header > figure {
   margin-top: 30px;
   padding: 5px;
-
-  box-shadow: 0px 0px 10px 5px var(--boxShadow);
-  background-color: var(--accentSecondary);
   border-radius: 50%;
 }
 
 .header > figure img {
   margin: 5px 0px 0px 5px;
-  width: 50px;
+  width: 100%;
 }
 
 .header > nav {
@@ -76,22 +72,15 @@
   position: absolute;
   right: 10px;
   top: 55px;
-  padding: 20px;
-
   opacity: 0;
   transition: height 0.4s, opacity 0.2s;
-
-  background-color: var(--backgroundPrimary);
-  border-radius: 6px;
   box-shadow: 0px 0px 10px var(--boxShadow);
 }
 
 .container-login:before {
   content: "";
   position: absolute;
-  top: -30px;
   right: 35px;
-
   border-right: 15px solid transparent;
   border-left: 15px solid transparent;
   border-top: 15px solid transparent;

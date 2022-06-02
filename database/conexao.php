@@ -11,7 +11,7 @@ PAREMETROS DE CONEXÃO MYSQLI
 const HOST = 'localhost';
 const USER = 'root';
 const PASSWORD = 'bcd127';
-const DATABASE = 'icatalogo';
+const DATABASE = 'techman';
 
 $conexao = mysqli_connect(HOST, USER, PASSWORD, DATABASE);
 

@@ -6,7 +6,7 @@ session_start();
 
 
 
-$raiz = "/daniel-wilson/senai-icatalogo-mysqli-alunos";
+$raiz = "/produtos-testes-mysql";
 
 
 ?>
@@ -16,8 +16,8 @@ $raiz = "/daniel-wilson/senai-icatalogo-mysqli-alunos";
 <header class="header">
 
     <figure>
-        <a href="/daniel-wilson/senai-icatalogo-mysqli-alunos/index.php">
-            <img src="<?php echo $raiz?>/imgs/logo.png" />
+        <a >
+            <img src="<?php echo $raiz?>/imgs/techman.png" />
         </a>
     </figure>
 
@@ -26,14 +26,13 @@ $raiz = "/daniel-wilson/senai-icatalogo-mysqli-alunos";
     ?>
         <nav>
             <ul>
-                <a id="menu-admin">Administrar</a>
+                <a id="menu-admin">Novo Equipamento</a>
             </ul>
         </nav>
         <div id="container-login" class="container-login">
             <h1>Fazer Login</h1>
             <form method="POST" action="<?php echo $raiz?>/componentes/header/acoesLogin.php">
                 <input type="hidden" name="acao" value="login" />
-                <input type="text" name="usuario" placeholder="Usuário" />
                 <input type="password" name="senha" placeholder="Senha" />
                 <button type="submit">Entrar</button>
             </form>

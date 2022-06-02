@@ -2,13 +2,11 @@
 
     require('../database/conexao.php');
 
-    $sql = "SELECT p.*, c.descricao AS nome_categoria FROM tbl_produto p
-            INNER JOIN tbl_categoria c ON
-            p.categoria_id = c.id";
+    $sql = "SELECT * FROM techman.equipamentos";
 
     $resultado = mysqli_query($conexao, $sql);
 
-    //TESTE DE SELEÇÃO DE DADOS:
+    // // TESTE DE SELEÇÃO DE DADOS:
     // var_dump($resultado);exit;
 
 ?>
@@ -22,7 +20,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../styles-global.css" />
     <link rel="stylesheet" href="./produtos.css" />
-    <title>Administrar Produtos</title>
+    <title>Novo Equipamento</title>
 
 </head>
 
@@ -55,32 +53,11 @@
                 
                     while ($produto = mysqli_fetch_array($resultado)) {
                         // var_dump($produto);exit;
-                        $valor = $produto["valor"];
-                        $desconto = $produto["desconto"];
-
-
-                        $valorDesconto = 0;
-
-                        if ($desconto > 0) {
-                            
-                            $valorDesconto = ($desconto / 100) * $valor;
-                            
-
-                        }
-
-                        $qtdParcelas = $valor > 1000 ? 12 : 6;
-
-                        $valorComDesconto = $valor - $valorDesconto;
-                        // $valor = $valor - $valorDesconto;
-                        // $valor -= $valorDesconto;
-
-                        $valorParcela = $valorComDesconto / $qtdParcelas;
-
                 ?>
 
                 <article class="card-produto">
 
-                <?php if(isset($_SESSION['usuarioId'])){?>
+                <?php if(!isset($_SESSION['usuarioId'])){?>
 
                     <div class="acoes-produtos">
                     <img onclick="javascript: window.location = './editar/?id=<?= $produto['id'] ?>'" src="../imgs/edit.svg" />
@@ -92,24 +69,7 @@
                 </figure>
 
                 <section>
-
-                    <span class="preco">
-                        R$ <?php echo number_format($valorComDesconto, 2, ',', '.'); ?>
-                        <em> <?php echo $desconto; ?> % off</em>
-                    </span>
-
-                    <span class="parcelamento">ou em
-                        <em>
-                        <?php echo $qtdParcelas; ?> x R$ <?php echo number_format($valorParcela, 2, ",", ".")?> sem juros
-                        </em>
-                    </span>
-
                     <span class="descricao"><?php echo $produto["descricao"]?></span>
-
-                    <span class="categoria">
-                        <em><?php echo $produto["nome_categoria"]; ?></em>
-                     </span>
-
                 </article>
 
                 <?php } ?>
