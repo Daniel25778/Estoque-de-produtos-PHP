@@ -21,12 +21,13 @@ $raiz = "/produtos-testes-mysql";
         </a>
     </figure>
 
+
     <?php
     if (!isset($_SESSION["usuarioId"])) {
     ?>
         <nav>
             <ul>
-                <a id="menu-admin">Novo Equipamento</a>
+                <a id="menu-admin">Fazer Login</a>
             </ul>
         </nav>
         <div id="container-login" class="container-login">
@@ -45,6 +46,7 @@ $raiz = "/produtos-testes-mysql";
                 <a id="menu-admin" onclick="logout()">Sair</a>
             </ul>
         </nav>
+       
         <form id="form-logout" style="display:none" method="POST" action="<?php echo $raiz ?>/componentes/header/acoesLogin.php">
             <input type="hidden" name="acao" value="logout" />
         </form>
@@ -56,7 +58,7 @@ $raiz = "/produtos-testes-mysql";
 
 <script lang="javascript">
     document.querySelector("#menu-admin").addEventListener("click", toggleLogin);
-
+    document.querySelector("#adicionarEquipamento").addEventListener("click", openModal);
     function logout() {
         document.querySelector("#form-logout").submit();
     }

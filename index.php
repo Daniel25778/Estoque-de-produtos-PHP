@@ -6,8 +6,6 @@
        $raiz = "/produtos-testes-mysql";
 ?>
 
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>

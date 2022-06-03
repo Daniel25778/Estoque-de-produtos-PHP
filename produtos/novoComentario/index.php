@@ -42,9 +42,9 @@
 
         <form class="form-produto" method="POST" action="../acoes.php" enctype="multipart/form-data">
 
-          <input type="hidden" name="acao" value="inserir" />
+          <input type="hidden" name="acao" value="comentar" />
 
-          <h1>Cadastro de produto</h1>
+          <h1>Adicionar comentario</h1>
 
           <ul>
 
@@ -67,26 +67,9 @@
           </ul>
 
           <div class="input-group span2">
-            <label for="descricao">Nome</label>
-            <input type="text" name="nome" id="nome" >
+            <label for="descricao">Comentario</label>
+            <input type="text" name="comentario" id="comentario" >
           </div>
-
-
-          <div class="input-group span2">
-            <label for="descricao">Descrição</label>
-            <input type="text" name="descricao" id="descricao" >
-          </div>
-
-          <div class="input-group span2">
-            <label for="descricao">Imagem</label>
-            <input type="text" name="imagem" id="imagem" >
-          </div>
-        
-          <div class="input-group span2">
-            <label for="descricao">Ativo</label>
-            <input type="text" name="ativo" id="ativo" >
-          </div>
-
 
           <button onclick="javascript:window.location.href = '../'">Cancelar</button>
           <button>Salvar</button>

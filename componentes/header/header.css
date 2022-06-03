@@ -66,9 +66,30 @@
   text-shadow: 0px 5px 5px var(--boxShadow);
 }
 
+.modal{
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background: rgba(0,0,0,0.8);
+  z-index: 99999;
+  opacity:0;
+  -webkit-transition: opacity 400ms ease-in;
+  -moz-transition: opacity 400ms ease-in;
+  transition: opacity 400ms ease-in;
+  pointer-events: none;
+}
+
+.modal:target {
+  opacity: 1;
+  pointer-events: auto;
+}
+
 .container-login {
+  background-color: #b3b3b3;
   width: 350px;
-  height: 0px;
   position: absolute;
   right: 10px;
   top: 55px;

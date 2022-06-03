@@ -53,14 +53,18 @@
   color: var(--textPrimary);
 }
 
-
-
-
-
 .card-produto section .descricao {
   margin-top: 16px;
   font-size: 16px;
   color: var(--textSecundary);
+}
+
+.comentario{
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  align-items: center;
+  justify-content: center;
 }
 
 .acoes-produtos {
@@ -70,7 +74,6 @@
   padding: 10px;
   display: flex;
   gap: 5px;
-
   background-color: var(--overlay);
   border-radius: 6px;
 

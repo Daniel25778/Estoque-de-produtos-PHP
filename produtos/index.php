@@ -33,14 +33,12 @@
 
         <section class="produtos-container">
 
-            <!-- BOTÕES DE INSERÇÃO DE PRODUTOS E CATEGORIAS -->
             <!-- CASO O USUÁRIO ESTEJA LOGADO EXIBE OS BOTÕES DE CADASTRO -->
 
             <?php if(isset($_SESSION['usuarioId'])){?>
     
                 <header>
-                    <button onclick="javascript:window.location.href ='./novo/'">Novo Produto</button>
-                    <button onclick="javascript:window.location.href ='../categorias/'">Adicionar Categoria</button>
+                    <button onclick="javascript:window.location.href ='./novo/'">Novo Equipamento</button>
                 </header>
 
             <?php } ?>    
@@ -57,10 +55,10 @@
 
                 <article class="card-produto">
 
-                <?php if(!isset($_SESSION['usuarioId'])){?>
+                <?php if(isset($_SESSION['usuarioId'])){?>
 
                     <div class="acoes-produtos">
-                    <img onclick="javascript: window.location = './editar/?id=<?= $produto['id'] ?>'" src="../imgs/edit.svg" />
+                    <img onclick="javascript: window.location = './comentarios/?id=<?= $produto['id'] ?>'" src="../imgs/edit.svg" />
                     <img onclick="deletar(<?= $produto['id'] ?>)" src="../imgs/trash.svg" />
                     </div>
                     <?php } ?>
@@ -70,6 +68,10 @@
 
                 <section>
                     <span class="descricao"><?php echo $produto["descricao"]?></span>
+                </article>
+
+                <section>
+                    <span class="descricao"><?php echo $produto["nome"]?></span>
                 </article>
 
                 <?php } ?>
@@ -97,7 +99,7 @@
     <!-- SCRIPT QUE DISPARA O FORM DE EXCLUSÃO DE PRODUTOS -->
     <script lang="javascript">
         function deletar(produtoId) {
-            if (confirm("Tem certeza que deseja deletar este produto?")) {
+            if (confirm("Atenção!Tem certeza que deseja excluir o equipamento?Essa ação não poderá ser desfeita!")) {
                 document.querySelector("#produtoId").value = produtoId;
                 document.querySelector("#formDeletar").submit();
             }

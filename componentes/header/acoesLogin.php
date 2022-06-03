@@ -19,7 +19,7 @@ switch ($_POST['acao']) {
         
        session_destroy();
 
-       header("location: ../../produtos/index.php");
+       header("location: /produtos-testes-mysql/index.php");
 
         break;
     
@@ -43,13 +43,11 @@ function realizarLogin ($usuario, $senha, $conexao){
 
        echo 'LOGADO!';
 
-    
-      
 
      header("location: ../../produtos/index.php");
 
     }else{
-        echo 'DEU ERRO OTARIO';
+        echo 'SENHA INCORRETA!';
     }
 
 }
